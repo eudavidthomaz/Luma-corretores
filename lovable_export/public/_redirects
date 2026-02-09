@@ -1,0 +1,40 @@
+# =====================================================
+# DUAL-DOMAIN ROUTING: saibamais.app (Páginas Públicas)
+# =====================================================
+# O domínio saibamais.app é uma opção alternativa para
+# compartilhar páginas públicas com visual mais neutro.
+# O domínio principal permanece ligadafotografia.com
+# =====================================================
+
+# Bloquear acesso ao admin no domínio público
+https://saibamais.app/admin/*    https://saibamais.app/  302!
+https://www.saibamais.app/admin/*    https://saibamais.app/  302!
+
+# Bloquear acesso à autenticação no domínio público
+# (OAuth2 só funciona em ligadafotografia.com)
+https://saibamais.app/auth    https://saibamais.app/  302!
+https://www.saibamais.app/auth    https://saibamais.app/  302!
+
+# Bloquear páginas institucionais no domínio público
+https://saibamais.app/privacy    https://saibamais.app/  302!
+https://saibamais.app/terms    https://saibamais.app/  302!
+https://www.saibamais.app/privacy    https://saibamais.app/  302!
+https://www.saibamais.app/terms    https://saibamais.app/  302!
+
+# Raiz do saibamais.app redireciona para um mini-site showcase
+https://saibamais.app/    /p/afterfotografia  302!
+https://www.saibamais.app/    /p/afterfotografia  302!
+
+# =====================================================
+# CLEAN URLs: saibamais.app/:slug → /p/:slug (rewrite)
+# =====================================================
+# Permite acessar saibamais.app/david em vez de /p/david
+# O chat mantém /chat/:slug pois já é um formato limpo
+# =====================================================
+https://saibamais.app/:slug    /p/:slug  200!
+https://www.saibamais.app/:slug    /p/:slug  200!
+
+# =====================================================
+# SPA FALLBACK (deve ser a última regra)
+# =====================================================
+/*    /index.html   200

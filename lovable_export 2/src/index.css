@@ -1,0 +1,622 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 263 70% 66%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 187 94% 43%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 64%;
+
+    --accent: 263 70% 66%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 100% / 0.1;
+    --input: 0 0% 100% / 0.1;
+    --ring: 263 70% 66%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 263 70% 66%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 100% / 0.05;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 100% / 0.1;
+    --sidebar-ring: 263 70% 66%;
+
+    /* Custom Luma Colors */
+    --luma-violet: 263 70% 66%;
+    --luma-cyan: 187 94% 43%;
+    --luma-dark: 0 0% 4%;
+    --luma-glass: 0 0% 100% / 0.05;
+    --luma-glass-border: 0 0% 100% / 0.1;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(263 70% 66%) 0%, hsl(280 80% 50%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(187 94% 43%) 0%, hsl(200 90% 50%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 6%) 0%, hsl(0 0% 4%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.1) 0%, hsl(0 0% 100% / 0.05) 100%);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     IVORY EDITORIAL GLASS - Luma Gallery & Mini-Site Theme
+     Luxury editorial aesthetic for photo delivery experience
+     ═══════════════════════════════════════════════════════════════════ */
+  .gallery-theme,
+  .minisite-editorial-theme {
+    /* Base Colors - Ivory Palette */
+    --ivory-base: 40 33% 94%;
+    --ivory-paper: 40 43% 97%;
+    --charcoal-ink: 30 10% 10%;
+    --warm-gray: 30 8% 33%;
+    
+    /* Gold Accents - Champagne to Deep */
+    --champagne-gold: 43 50% 57%;
+    --gold-highlight: 43 60% 71%;
+    --gold-deep: 37 52% 41%;
+    
+    /* Glass Effects */
+    --border-soft: 30 10% 10% / 0.10;
+    --glass-ivory-1: 0 0% 100% / 0.50;
+    --glass-ivory-2: 0 0% 100% / 0.30;
+    
+    /* Semantic Tokens for Gallery */
+    --gallery-background: var(--ivory-base);
+    --gallery-surface: var(--ivory-paper);
+    --gallery-text: var(--charcoal-ink);
+    --gallery-text-muted: var(--warm-gray);
+    --gallery-accent: var(--champagne-gold);
+    --gallery-accent-highlight: var(--gold-highlight);
+    --gallery-accent-deep: var(--gold-deep);
+    --gallery-border: var(--border-soft);
+    --gallery-glass: var(--glass-ivory-1);
+    --gallery-glass-subtle: var(--glass-ivory-2);
+
+    /* ═══════════════════════════════════════════════════════════════════
+       REMAP CORE DESIGN TOKENS for Editorial Theme
+       This allows all existing components to work seamlessly
+       ═══════════════════════════════════════════════════════════════════ */
+    --background: 40 33% 94%;
+    --foreground: 30 10% 10%;
+    
+    --card: 40 43% 97%;
+    --card-foreground: 30 10% 10%;
+    
+    --popover: 40 43% 97%;
+    --popover-foreground: 30 10% 10%;
+    
+    --primary: 43 50% 57%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 37 52% 41%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 35 30% 92%;
+    --muted-foreground: 30 8% 33%;
+    
+    --accent: 43 60% 71%;
+    --accent-foreground: 30 10% 10%;
+    
+    --border: 30 10% 10% / 0.1;
+    --input: 30 10% 10% / 0.1;
+    --ring: 43 50% 57%;
+  }
+
+  .dark {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   GLOBAL DARK SCROLLBARS - Premium Dark Theme
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Webkit Browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Firefox Support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+}
+
+/* Gallery Theme - Override with gold-tinted scrollbars */
+.gallery-theme ::-webkit-scrollbar-thumb,
+.minisite-editorial-theme ::-webkit-scrollbar-thumb {
+  background: hsl(var(--warm-gray) / 0.3);
+}
+
+.gallery-theme ::-webkit-scrollbar-thumb:hover,
+.minisite-editorial-theme ::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--warm-gray) / 0.5);
+}
+
+.gallery-theme *,
+.minisite-editorial-theme * {
+  scrollbar-color: hsl(var(--warm-gray) / 0.3) transparent;
+}
+
+@layer components {
+  .glass {
+    @apply bg-luma-glass backdrop-blur-xl border border-luma-glass-border;
+  }
+
+  .glass-strong {
+    @apply bg-white/10 backdrop-blur-2xl border border-white/20;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.3);
+  }
+
+  .glow-secondary {
+    box-shadow: 0 0 40px hsl(var(--secondary) / 0.3);
+  }
+
+  /* Scroll Snap Container */
+  .snap-container {
+    scroll-snap-type: y proximity;
+    scroll-behavior: smooth;
+    overflow-y: auto;
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile browsers */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Disable snap on mobile for smoother scroll */
+  @media (max-width: 768px) {
+    .snap-container {
+      scroll-snap-type: none;
+    }
+  }
+
+  /* Scroll Snap Sections */
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+
+  .status-ring {
+    @apply relative;
+  }
+
+  .status-ring::before {
+    content: '';
+    @apply absolute inset-0 rounded-full;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    padding: 2px;
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: pulse-ring 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-ring {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.02); }
+  }
+
+  .story-card-overlay {
+    background: linear-gradient(to top, hsl(0 0% 0% / 0.8) 0%, transparent 60%);
+  }
+
+  /* Custom scrollbar */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-white/20;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     GALLERY THEME - Glassmorphism Components
+     ═══════════════════════════════════════════════════════════════════ */
+  .gallery-glass {
+    background: hsl(var(--gallery-glass));
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid hsl(var(--gallery-border));
+    box-shadow: 0 4px 24px hsl(var(--charcoal-ink) / 0.06);
+  }
+
+  .gallery-glass-subtle {
+    background: hsl(var(--gallery-glass-subtle));
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid hsl(var(--gallery-border));
+  }
+
+  .gallery-glass-card {
+    background: hsl(var(--gallery-glass));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--gallery-border));
+    box-shadow: 
+      0 4px 24px hsl(var(--charcoal-ink) / 0.06),
+      inset 0 1px 0 hsl(0 0% 100% / 0.4);
+  }
+
+  /* Paper Grain Texture */
+  .gallery-grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.025;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* Gallery Button Styles */
+  .gallery-btn-primary {
+    background: linear-gradient(135deg, hsl(var(--champagne-gold)), hsl(var(--gold-deep)));
+    color: hsl(0 0% 100%);
+    border: none;
+    box-shadow: 0 2px 12px hsl(var(--champagne-gold) / 0.3);
+    transition: all 0.2s ease;
+  }
+
+  .gallery-btn-primary:hover {
+    box-shadow: 0 4px 20px hsl(var(--champagne-gold) / 0.4);
+    transform: translateY(-1px);
+  }
+
+  .gallery-btn-secondary {
+    background: hsl(var(--gallery-glass));
+    color: hsl(var(--gallery-text));
+    border: 1px solid hsl(var(--gallery-border));
+    backdrop-filter: blur(12px);
+    transition: all 0.2s ease;
+  }
+
+  .gallery-btn-secondary:hover {
+    border-color: hsl(var(--champagne-gold) / 0.3);
+    box-shadow: 0 0 0 3px hsl(var(--champagne-gold) / 0.1);
+  }
+
+  /* Gallery Input Styles */
+  .gallery-input {
+    background: hsl(var(--gallery-surface)) !important;
+    border: 1px solid hsl(var(--gallery-border)) !important;
+    color: hsl(var(--gallery-text)) !important;
+    transition: all 0.2s ease;
+  }
+
+  .gallery-input:focus {
+    outline: none;
+    border-color: hsl(var(--champagne-gold));
+    box-shadow: 0 0 0 3px hsl(var(--champagne-gold) / 0.15);
+  }
+
+  .gallery-input::placeholder {
+    color: hsl(var(--gallery-text-muted)) !important;
+  }
+
+  /* Gallery Textarea Styles */
+  .gallery-textarea {
+    background: hsl(var(--gallery-surface)) !important;
+    border: 1px solid hsl(var(--gallery-border)) !important;
+    color: hsl(var(--gallery-text)) !important;
+    transition: all 0.2s ease;
+  }
+
+  .gallery-textarea:focus {
+    outline: none;
+    border-color: hsl(var(--champagne-gold));
+    box-shadow: 0 0 0 3px hsl(var(--champagne-gold) / 0.15);
+  }
+
+  .gallery-textarea::placeholder {
+    color: hsl(var(--gallery-text-muted)) !important;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     EDITORIAL TYPOGRAPHY - Premium Display Styles
+     ═══════════════════════════════════════════════════════════════════ */
+  .text-editorial-display {
+    font-family: 'Fraunces', Georgia, serif;
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 144;
+  }
+
+  /* Photo Vignette Effect */
+  .photo-vignette::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 40%,
+      hsl(var(--charcoal-ink) / 0.25) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Ivory Background with warmth */
+  .ivory-warm {
+    background: linear-gradient(
+      135deg,
+      hsl(40 33% 94%) 0%,
+      hsl(40 43% 97%) 50%,
+      hsl(35 30% 92%) 100%
+    );
+  }
+
+  /* Gallery Skeleton Loader - Ivory themed */
+  .gallery-skeleton {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--ivory-base)) 0%,
+      hsl(var(--ivory-paper)) 100%
+    );
+  }
+
+  /* Editorial Photo Frame Effect */
+  .photo-frame-editorial {
+    position: relative;
+  }
+
+  .photo-frame-editorial::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    pointer-events: none;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    z-index: 5;
+  }
+
+  .photo-frame-editorial:hover::before {
+    border-color: hsl(var(--champagne-gold) / 0.2);
+  }
+
+  /* Favorite Gold Line Indicator */
+  .favorite-indicator-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--champagne-gold) / 0.8) 50%,
+      transparent 100%
+    );
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   BENTO GRID DASHBOARD - Glass Premium
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Bento Card Base */
+.bento-card {
+  @apply relative overflow-hidden rounded-2xl p-5;
+  background: hsl(0 0% 100% / 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid hsl(0 0% 100% / 0.08);
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.bento-card:hover {
+  background: hsl(0 0% 100% / 0.05);
+  border-color: hsl(0 0% 100% / 0.12);
+  box-shadow: 0 8px 32px hsl(0 0% 0% / 0.3);
+}
+
+/* Quick Action Card */
+.quick-action-card {
+  @apply relative rounded-xl p-4 cursor-pointer;
+  background: linear-gradient(135deg, hsl(0 0% 100% / 0.05), transparent);
+  border: 1px solid hsl(0 0% 100% / 0.08);
+  transition: all 0.2s ease;
+}
+
+.quick-action-card:hover {
+  transform: translateY(-2px);
+  background: hsl(0 0% 100% / 0.08);
+  border-color: hsl(0 0% 100% / 0.15);
+  box-shadow: 0 12px 24px hsl(var(--primary) / 0.15);
+}
+
+/* Progress Circle */
+.progress-circle {
+  transform: rotate(-90deg);
+}
+
+.progress-circle-track {
+  fill: none;
+  stroke: hsl(0 0% 100% / 0.1);
+  stroke-width: 6;
+}
+
+.progress-circle-fill {
+  fill: none;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.4s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.2s ease-out forwards;
+  }
+
+  /* GPU Acceleration utilities */
+  .gpu-accelerated {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+  
+  .aurora-orb {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Safe area padding for notched devices */
+  .safe-area-inset {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  /* Touch-friendly tap targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     MOBILE INPUT ANTI-ZOOM - Prevents iOS/Android auto-zoom on focus
+     ═══════════════════════════════════════════════════════════════════ */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+  
+  .overscroll-contain {
+    overscroll-behavior: contain;
+  }
+  
+  /* Safe area padding for notch devices */
+  .pb-safe {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom, 1rem));
+  }
+  
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* Gallery Theme - Slow Shimmer for Editorial Feel */
+  @keyframes shimmer-slow {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .gallery-skeleton {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--ivory-paper)) 0%,
+      hsl(var(--ivory-base)) 50%,
+      hsl(var(--ivory-paper)) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer-slow 3s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-skeleton {
+      animation: none;
+      opacity: 0.7;
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   iOS INPUT ZOOM PREVENTION - Global override for touch devices
+   ═══════════════════════════════════════════════════════════════════ */
+@supports (-webkit-touch-callout: none) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}

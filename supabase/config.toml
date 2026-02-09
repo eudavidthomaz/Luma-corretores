@@ -1,0 +1,44 @@
+project_id = "aeclwxyanhhodkbcykit"
+
+[functions.chat-luma]
+verify_jwt = false
+
+[functions.check-subscription]
+verify_jwt = false
+
+[functions.create-checkout]
+verify_jwt = false
+
+[functions.customer-portal]
+verify_jwt = false
+
+[functions.check-availability]
+verify_jwt = false
+
+[functions.google-calendar-oauth]
+verify_jwt = false
+
+[functions.stripe-webhook]
+verify_jwt = false
+
+[functions.widget-profile]
+verify_jwt = false
+
+[functions.gallery-analytics]
+verify_jwt = false
+
+[functions.gallery-signed-urls]
+verify_jwt = false
+
+[functions.proposal-public]
+verify_jwt = false
+
+[functions.enhance-contract]
+verify_jwt = false
+
+[functions.cleanup-freeloaders]
+verify_jwt = false
+
+[functions.check-trial-expiration]
+verify_jwt = false
+
